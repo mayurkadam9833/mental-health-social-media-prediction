@@ -1,0 +1,14 @@
+pandas 
+numpy 
+matplotlib 
+seaborn 
+imbalanced-learn 
+scikit-learn 
+ensure 
+python-box
+pyyaml
+joblib 
+streamlit 
+
+
+-e .
