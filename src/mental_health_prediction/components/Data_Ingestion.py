@@ -34,7 +34,7 @@ class DataIngestion:
     def extract_file(self): 
         unzip_path=self.config.unzip_dir
         os.makedirs(unzip_path,exist_ok=True)                             # create path if not exists
-        with zipfile.ZipFile(self.config.local_data_path,"w")as zipref: 
+        with zipfile.ZipFile(self.config.local_data_path,"r")as zipref: 
             zipref.extractall(unzip_path)                                 # extract all files inside unzip_dir
             logger.info(f"file extract sucessfully.")                
         
