@@ -1,0 +1,17 @@
+COLUMNS:
+ person_name                 :   object 
+ age                         :   int64  
+ date                        :   object 
+ gender                      :   object 
+ platform                    :   object 
+ daily_screen_time_min       :   int64  
+ social_media_time_min       :   int64  
+ negative_interactions_count :   int64  
+ positive_interactions_count :   int64  
+ sleep_hours                 :   float64
+ physical_activity_min       :   int64  
+ anxiety_level               :   int64  
+ stress_level                :   int64  
+ mood_level                  :   int64  
+TARGET_COLUMN:
+ mental_state                :   object 
