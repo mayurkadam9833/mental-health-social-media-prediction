@@ -1,0 +1,8 @@
+artifacts_root: artifacts    # All outputs files saved in artifacts folder
+
+data_ingestion: 
+ root_dir: artifacts/data_ingestion                                                                                 # main folder for data ingestion 
+ source_url: https://github.com/mayurkadam9833/Datasets/raw/refs/heads/main/mental_health_social_media_dataset.zip  # url for download data file
+ local_data_path: artifacts/data_ingestion/mental_health_social_media_dataset.zip                                   # download data path file
+ unzip_dir: artifacts/data_ingestion                                                                                # unzip data file path
+
