@@ -6,3 +6,7 @@ data_ingestion:
  local_data_path: artifacts/data_ingestion/mental_health_social_media_dataset.zip                                   # download data path file
  unzip_dir: artifacts/data_ingestion                                                                                # unzip data file path
 
+data_validation: 
+ root_dir: artifacts/data_validation                                                                                # main folder for data validation
+ unzip_data: artifacts/data_ingestion/mental_health_social_media_dataset.csv                                        # extracted data path
+ status: artifacts/data_validation/validation_status.txt                                                            # schema validation text file

@@ -14,3 +14,16 @@ class DataIngestionConfig:
     local_data_path: Path
     unzip_dir:Path
 
+
+"""
+Entity: DataValidationConfig
+Description:
+Represents the configuration parameters required for the Data Validation stage. 
+This entity holds paths of extracted dataset files, defined schema, validation status text file
+"""
+@dataclass(frozen=True)
+class DataValidationConfig: 
+    root_dir:Path 
+    unzip_data: Path
+    status:str
+    all_schema: dict

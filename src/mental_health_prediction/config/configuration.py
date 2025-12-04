@@ -1,5 +1,5 @@
 from src.mental_health_prediction.constants import *
-from src.mental_health_prediction.entity.config_entity import DataIngestionConfig 
+from src.mental_health_prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig
 from src.mental_health_prediction.utils.common import read_yaml,create_dir
 
 """""
@@ -37,3 +37,20 @@ class ConfigManager:
             unzip_dir=config.unzip_dir
         )
         return data_ingestion_config
+    
+    # method to get data validation config object
+    def get_data_validation_config(self)-> DataValidationConfig: 
+        config=self.config.data_validation  
+        schema=self.schema.COLUMNS 
+
+        # create data validation folder
+        create_dir([config.root_dir])
+
+        # prepare and return DataValidationConfig dataclass
+        data_validation_config=DataValidationConfig(
+            root_dir=config.root_dir, 
+            unzip_data=config.unzip_data,
+            status=config.status,
+            all_schema=schema
+        )
+        return data_validation_config
