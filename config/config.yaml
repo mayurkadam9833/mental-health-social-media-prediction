@@ -10,3 +10,7 @@ data_validation:
  root_dir: artifacts/data_validation                                                                                # main folder for data validation
  unzip_data: artifacts/data_ingestion/mental_health_social_media_dataset.csv                                        # extracted data path
  status: artifacts/data_validation/validation_status.txt                                                            # schema validation text file
+
+data_transformation: 
+ root_dir: artifacts/data_transformation                                                                            # main folder for data transformation                                                                                          
+ data_path: artifacts/data_ingestion/mental_health_social_media_dataset.csv                                         # extracted data path

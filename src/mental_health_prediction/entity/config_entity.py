@@ -27,3 +27,16 @@ class DataValidationConfig:
     unzip_data: Path
     status:str
     all_schema: dict
+
+
+"""
+Entity: DataTransformationConfig
+Description:
+Represents the configuration parameters required for the Data Transformation stage. 
+This entity holds paths of extracted dataset file, target column
+"""
+@dataclass(frozen=True)
+class DataTransformationConfig: 
+    root_dir:Path
+    data_path:Path
+    target_col: str   
