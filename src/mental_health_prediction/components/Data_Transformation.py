@@ -1,6 +1,5 @@
 import os 
 import joblib 
-from pathlib import Path
 import pandas as pd 
 from sklearn.model_selection import train_test_split 
 from sklearn.preprocessing import OneHotEncoder
@@ -36,6 +35,8 @@ class DataTransformation:
         # encode actegorical data to numeric
         data=pd.concat([data.drop(["gender"],axis=1),pd.DataFrame(self.gender_encode.fit_transform(data[["gender"]]),columns=self.gender_encode.get_feature_names_out())],axis=1)
         data=pd.concat([data.drop(["platform"],axis=1),pd.DataFrame(self.platform_encode.fit_transform(data[["platform"]]),columns=self.platform_encode.get_feature_names_out())],axis=1)
+        joblib.dump(self.gender_encode,os.path.join(self.config.root_dir,"gender_encode.joblib"))
+        joblib.dump(self.platform_encode,os.path.join(self.config.root_dir,"platform_encode.joblib"))
         return data 
     
     # method for split data into train and test, perform oversampling, scaling
@@ -55,6 +56,7 @@ class DataTransformation:
         # apply StandardScaler on input features
         scale_train_x=self.scale.fit_transform(sample_train_x)
         scale_test_x=self.scale.transform(test_x)
+        joblib.dump(self.scale,os.path.join(self.config.root_dir,"scale.joblib"))
 
         # concat input and target features
         train_data=pd.concat([pd.DataFrame(scale_train_x).reset_index(drop=True),pd.Series(sample_train_y).reset_index(drop=True)],axis=1)
