@@ -1,5 +1,5 @@
 from src.mental_health_prediction.constants import *
-from src.mental_health_prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig
+from src.mental_health_prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig
 from src.mental_health_prediction.utils.common import read_yaml,create_dir
 
 """""
@@ -70,3 +70,23 @@ class ConfigManager:
             target_col=list(schema.keys())[0]
         )
         return data_transformation_config
+    
+    # method to get model trainer config object
+    def get_model_trainer_config(self)-> ModelTrainerConfig: 
+        config=self.config.model_trainer 
+        schema=self.schema.TARGET_COLUMN 
+        params=self.params.KNeighborsClassifier 
+
+        # create model trainer folder
+        create_dir([config.root_dir])
+
+        # prepare and return ModelTrainerConfig dataclass
+        model_trainer_config=ModelTrainerConfig(
+            root_dir=config.root_dir, 
+            train_data=config.train_data,
+            target_col=list(schema.keys())[0],
+            algorithm=params.algorithm,
+            n_neighbors=params.n_neighbors, 
+            weights=params.weights
+        )
+        return model_trainer_config

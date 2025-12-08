@@ -1,1 +1,4 @@
-key: val
+KNeighborsClassifier:
+ algorithm: ball_tree 
+ n_neighbors: 2 
+ weights: uniform 

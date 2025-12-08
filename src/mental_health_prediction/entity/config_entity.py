@@ -40,3 +40,18 @@ class DataTransformationConfig:
     root_dir:Path
     data_path:Path
     target_col: str   
+
+"""
+Entity: ModelTrainerConfig
+Description:
+Represents the configuration parameters required for the Model training stage. 
+This entity holds paths of train dataset, target column, parameters of model
+"""
+@dataclass(frozen=True) 
+class ModelTrainerConfig: 
+    root_dir: Path 
+    train_data: Path 
+    target_col: str 
+    algorithm: str 
+    n_neighbors: int
+    weights: str 
