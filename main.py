@@ -2,6 +2,7 @@ from src.mental_health_prediction.pipeline.data_ingestion_pipeline import DataIn
 from src.mental_health_prediction.pipeline.data_validation_pipeline import DataValidationPipeline
 from src.mental_health_prediction.pipeline.data_transformation_pipeline import DataTransformationPipeline
 from src.mental_health_prediction.pipeline.model_trainer_pipeline import ModelTrainerPipeline
+from src.mental_health_prediction.pipeline.model_evaluation_pipeline import ModelEvaluationPipeline
 from src.mental_health_prediction.logging import logger
 
 # data ingestion pipeline execution
@@ -49,6 +50,19 @@ if __name__ == "__main__":
         obj=ModelTrainerPipeline()
         obj.main()
         logger.info(f"<<<< stage:{stage_four} completed >>>>\n")
+    except Exception as e: 
+        logger.info(e)
+        raise e 
+    
+
+# Model Evaluation pipeline execution
+stage_five="Model Evaluation"
+if __name__ == "__main__": 
+    try: 
+        logger.info(f"<<<< stage:{stage_five} started >>>>")
+        obj=ModelEvaluationPipeline()
+        obj.main()
+        logger.info(f"<<<< stage:{stage_five} completed >>>>\n")
     except Exception as e: 
         logger.info(e)
         raise e 

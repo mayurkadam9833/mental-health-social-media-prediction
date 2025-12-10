@@ -1,5 +1,5 @@
 from src.mental_health_prediction.constants import *
-from src.mental_health_prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig
+from src.mental_health_prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig,ModelEvaluationConfig
 from src.mental_health_prediction.utils.common import read_yaml,create_dir
 
 """""
@@ -90,3 +90,21 @@ class ConfigManager:
             weights=params.weights
         )
         return model_trainer_config
+    
+    # method to get model evaluation config object
+    def get_model_evaluation_config(self)-> ModelEvaluationConfig: 
+        config=self.config.model_evaluation 
+        schema=self.schema.TARGET_COLUMN 
+
+        # create model evaluation folder
+        create_dir([config.root_dir])
+
+        # prepare and return ModelEvaluationConfig dataclass
+        model_evaluation_config=ModelEvaluationConfig(
+            root_dir=config.root_dir, 
+            test_data=config.test_data, 
+            model_path=config.model_path, 
+            evaluation=config.evaluation, 
+            target_col=list(schema.keys())[0]
+        )
+        return model_evaluation_config

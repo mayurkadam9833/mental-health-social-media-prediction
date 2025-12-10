@@ -55,3 +55,17 @@ class ModelTrainerConfig:
     algorithm: str 
     n_neighbors: int
     weights: str 
+
+"""
+Entity: ModelEvaluationConfig
+Description:
+Represents the configuration parameters required for the Model evaluation stage. 
+This entity holds paths of test dataset, target column, train model and evaluation file
+"""
+@dataclass(frozen=True) 
+class ModelEvaluationConfig: 
+    root_dir: Path 
+    test_data: Path 
+    model_path: Path
+    evaluation: Path
+    target_col: str
